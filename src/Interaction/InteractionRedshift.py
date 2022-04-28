@@ -45,11 +45,11 @@ class InteractionRedshift(InteractionFunction):
 
         #Affects Diffuse
         self.bool_interaction(dialog, doc, const.LIGHT_LISTER_REDSHIFT_AFFECT_DIFFUSE,
-                              clicked_id, list_lights, c4d.REDSHIFT_LIGHT_AFFECTS_DIFFUSE)
+                              clicked_id, list_lights, c4d.REDSHIFT_LIGHT_DIFFUSE_RAY_CONTRIBUTION_SCALE)
 
         #Affects Specular
         self.bool_interaction(dialog, doc, const.LIGHT_LISTER_REDSHIFT_AFFECT_SPECULAR,
-                              clicked_id, list_lights, c4d.REDSHIFT_LIGHT_AFFECTS_SPECULAR)
+                              clicked_id, list_lights, c4d.REDSHIFT_LIGHT_REFLECTION_RAY_CONTRIBUTION_SCALE)
 
         #Color mode
         self.long_interaction(dialog, doc, const.LIGHT_LISTER_REDSHIFT_COLORMODE,
@@ -359,7 +359,7 @@ class InteractionRedshift(InteractionFunction):
         dialog.Enable(const.REDSHIFT_LIGHT_PHYSICALSUN_SATURATION + light_id + 2, state)
 
     def disable_redshift_data(self, dialog, list_lights, layers):
-        for i in xrange(len(list_lights)):
+        for i in range(len(list_lights)):
             light_type = dialog.GetLong(const.LIGHT_LISTER_REDSHIFT_LIGHT_TYPE + i + 2)
 
             #AREA, POINT, SPOT, INFINITE

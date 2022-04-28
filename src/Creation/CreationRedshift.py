@@ -1,7 +1,7 @@
 import c4d
 
 from ..Const import Const
-from CreationFunction import CreationFunction
+from .CreationFunction import CreationFunction
 
 const = Const()
 
@@ -94,12 +94,12 @@ class CreationRedshift(CreationFunction):
             #Affects Diffuse
             if config["AffectsDiffuse"]:
                 self.create_checkbox(dialog, const.LIGHT_LISTER_REDSHIFT_AFFECT_DIFFUSE,
-                                   "Affects Diffuse", const.OBJ, list_lights, c4d.REDSHIFT_LIGHT_AFFECTS_DIFFUSE)
+                                   "Affects Diffuse", const.OBJ, list_lights, c4d.REDSHIFT_LIGHT_DIFFUSE_RAY_CONTRIBUTION_SCALE)
 
             #Affects Specular
             if config["AffectsSpecular"]:
                 self.create_checkbox(dialog, const.LIGHT_LISTER_REDSHIFT_AFFECT_SPECULAR,
-                                   "Affects Specular", const.OBJ, list_lights, c4d.REDSHIFT_LIGHT_AFFECTS_SPECULAR)
+                                   "Affects Specular", const.OBJ, list_lights, c4d.REDSHIFT_LIGHT_REFLECTION_RAY_CONTRIBUTION_SCALE)
 
             #Color mode
             if config["Colormode"]:
@@ -404,7 +404,7 @@ class CreationRedshift(CreationFunction):
             if config["Layers"]:
                 buffer = list()
                 buffer.append({"id": 0, "text": "None"})
-                for i in xrange(len(layers)):
+                for i in range(len(layers)):
                     buffer.append({"id": i+1, "text": layers[i].GetName()})
 
                 self.create_cycle_button(dialog, const.LIGHT_LISTER_REDSHIFT_LAYERS,
@@ -473,7 +473,7 @@ class CreationRedshift(CreationFunction):
         dialog.Enable(const.REDSHIFT_LIGHT_PHYSICALSUN_SATURATION + light_id + 2, state)
 
     def disable_redshift_data(self, dialog, list_lights, layers):
-        for i in xrange(len(list_lights)):
+        for i in range(len(list_lights)):
             light_type = dialog.GetLong(const.LIGHT_LISTER_REDSHIFT_LIGHT_TYPE + i + 2)
 
             #AREA, POINT, SPOT, INFINITE
