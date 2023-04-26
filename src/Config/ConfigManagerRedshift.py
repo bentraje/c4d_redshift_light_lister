@@ -70,6 +70,7 @@ class ConfigManagerRedshift(JsonFunction):
         dialog.AddCheckbox(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_MULITPLIER, c4d.BFH_LEFT | c4d.BFV_TOP, 0, 0, "GI Mult")
         dialog.AddCheckbox(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_PHOTONS, c4d.BFH_LEFT | c4d.BFV_TOP, 0, 0, "GI Num")
         dialog.AddCheckbox(const.LIGHT_LISTER_REDSHIFT_OPTIONS_LAYERS, c4d.BFH_LEFT | c4d.BFV_TOP, 0, 0, "Layers")
+        dialog.AddCheckbox(const.REDSHIFT_LIGHT_LIGHT_GROUP, c4d.BFH_LEFT | c4d.BFV_TOP, 0, 0, "AOV Light Groups")
 
         self.fillRedshiftCheckBox(dialog)
 
@@ -139,6 +140,7 @@ class ConfigManagerRedshift(JsonFunction):
         dialog.SetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_MULITPLIER, self.redshiftConfig["GImult"])
         dialog.SetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_PHOTONS, self.redshiftConfig["GInum"])
         dialog.SetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_LAYERS, self.redshiftConfig["Layers"])
+        dialog.SetBool(const.REDSHIFT_LIGHT_LIGHT_GROUP, self.redshiftConfig["LightGroup"])
 
     def generateRedshiftjson(self, dialog):
         redshift = {}
@@ -203,6 +205,8 @@ class ConfigManagerRedshift(JsonFunction):
         redshift["GI"] = dialog.GetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_ENABLED)
         redshift["GImult"] = dialog.GetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_MULITPLIER)
         redshift["GInum"] = dialog.GetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_GI_PHOTONS)
+        redshift["LightGroup"] = dialog.GetBool(const.REDSHIFT_LIGHT_LIGHT_GROUP)
         redshift["Layers"] = dialog.GetBool(const.LIGHT_LISTER_REDSHIFT_OPTIONS_LAYERS)
+
 
         self.jsonContent["redshift"] = redshift

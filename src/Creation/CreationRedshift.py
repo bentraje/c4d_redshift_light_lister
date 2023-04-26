@@ -409,6 +409,12 @@ class CreationRedshift(CreationFunction):
 
                 self.create_cycle_button(dialog, const.LIGHT_LISTER_REDSHIFT_LAYERS,
                                        "Layer", buffer, const.OBJ, list_lights, layers=layers)
+
+            #Light Group
+            if config["LightGroup"]:
+                print ("weee Light Groups")
+
+
         dialog.GroupEnd()
         dialog.GroupEnd()
 

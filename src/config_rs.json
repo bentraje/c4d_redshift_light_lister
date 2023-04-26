@@ -61,6 +61,7 @@
         "GI": false,
         "GImult": false,
         "GInum": false,
+        "LightGroup": true,
         "Layers": true
     }
 }
